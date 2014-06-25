@@ -3,10 +3,10 @@
 var Bullet = function(game, id) {
     Phaser.Sprite.call(this, game, 0, 0, id);
     this.anchor.setTo(0.5, 0.5);
-    game.physics.enable(this, Phaser.Physics.ARCADE);
+    game.physics.arcade.enableBody(this);
     this.checkWorldBounds = true;
     this.outOfBoundsKill = true; 
-    this.collideWorldBounds = true; 
+    this.body.collideWorldBounds = false;
     this.kill();  
 };
 

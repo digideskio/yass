@@ -354,6 +354,8 @@ Play.prototype = {
             bullet.health = 2;
         if (this.playSound == 1)
             this.enemyShotSound.play();
+        this.game.add.existing(bullet);
+        this.enemyBulletPool.add(bullet);        
     },
     playerHit: function(bullet, player) {
         player.damage(bullet.health);
