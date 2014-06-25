@@ -101,7 +101,7 @@ Play.prototype = {
             Phaser.Keyboard.DOWN,
             Phaser.Keyboard.SPACEBAR,
             Phaser.Keyboard.P,
-            Phaser.Keyboard.F
+            Phaser.Keyboard.S
         ]);
 
         // Setup FPS display
@@ -137,12 +137,9 @@ Play.prototype = {
     update: function() {
         this.player.body.y = 500;
         // Process player controls
-        if (this.input.keyboard.isDown(Phaser.Keyboard.F)) {
-            console.log("F");
-            this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-            this.game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
-            this.game.scale.startFullScreen();
-        } else if (this.input.keyboard.isDown(Phaser.Keyboard.P)) {
+        if (this.input.keyboard.justPressed(Phaser.Keyboard.S)) {
+            this.soundOnOff();
+        } else if (this.input.keyboard.justPressed(Phaser.Keyboard.P)) {
             this.game.input.onDown.addOnce(function() {
                 this.game.paused = false;
                 this.pauseText2.destroy();
@@ -243,21 +240,21 @@ Play.prototype = {
     leftInputIsActive: function() {
         var isActive = false;
 
-        isActive = (this.input.keyboard.isDown(Phaser.Keyboard.LEFT) || this.game.input.activePointer.x+50<this.player.x);
+        isActive = (this.input.keyboard.isDown(Phaser.Keyboard.LEFT));// || this.game.input.activePointer.x+50<this.player.x);
 
         return isActive;
     },
     rightInputIsActive: function() {
         var isActive = false;
 
-        isActive = (this.input.keyboard.isDown(Phaser.Keyboard.RIGHT) || this.game.input.activePointer.x-50>this.player.x);
+        isActive = (this.input.keyboard.isDown(Phaser.Keyboard.RIGHT));// || this.game.input.activePointer.x-50>this.player.x);
 
         return isActive;
     },
     fireInputIsActive: function() {
         var isActive = false;
 
-        isActive = (this.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) || this.input.activePointer.isDown);
+        isActive = (this.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR));// || this.input.activePointer.isDown);
 
         return isActive;
     },
